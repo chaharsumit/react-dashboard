@@ -1,6 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+  v2.0 | 20110126
+  License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -50,3 +50,69 @@ table {
 *,*::before,*::after{
   box-sizing: border-box;
 }
+.container{
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+/* flex styles */
+
+.flex{
+  display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.justify-space-between{
+  justify-content: space-between;
+}
+
+.align-items-center{
+  align-items: center;
+}
+
+/* flex styles */
+
+/* spacing */
+
+.pd-ver-1{
+  padding: 1rem 0;
+}
+
+.pd-ver-2{
+  padding: 2rem 0;
+}
+
+.pd-hor-1{
+  padding: 0 1rem;
+}
+
+.pd-hor-2{
+  padding: 0 2rem;
+}
+
+.mt-1{
+  margin-top: 1rem;
+}
+
+.mt-2{
+  margin-top: 2rem;
+}
+
+.mb-1{
+  margin-bottom: 1rem;
+}
+
+.mb-2{
+  margin-bottom: 2rem;
+}
+
+/* spacing */

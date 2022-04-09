@@ -1,8 +1,14 @@
 import { createStore, combineReducers } from "redux";
-import userReducer from "./reducers/userReducer";
+import authReducer from "./reducers/authReducer";
+import loaderReducer from "./reducers/loaderReducer";
+import currUserReducer from './reducers/currUserReducer';
+import formVisibilityReducer from './reducers/formVisibilityReducer';
 
 const rootReducer = combineReducers({
-  userReducer: userReducer
+  authReducer: authReducer,
+  loaderReducer: loaderReducer,
+  currUserReducer: currUserReducer,
+  formVisibilityReducer: formVisibilityReducer,
 });
 
 const store = createStore(rootReducer);
