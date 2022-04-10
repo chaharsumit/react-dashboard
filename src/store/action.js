@@ -1,6 +1,5 @@
 export function addUserInput(field, value){
   field = field.toUpperCase();
-  console.log(field);
   return {
     type: `SET_${field}`,
     payload: value
@@ -14,7 +13,6 @@ export function toggleLoader(){
 }
 
 export function setLoginStatus(){
-  console.log('ss');
   return {
     type: "SET_LOGIN_STATUS"
   }
