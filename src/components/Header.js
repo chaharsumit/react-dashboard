@@ -1,19 +1,21 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import { toggleLoginForm, logout, toggleSettings, setLoginStatus } from "../store/action";
-import { setUser, setLogin } from "../utils/storage";
+import { toggleLoginForm, logout, toggleSettings } from "../store/action";
+import { setLogin } from "../utils/storage";
 
 function Header(props){
+
   return (
-    <header className="pd-ver-1">
+    <header className="pd-ver-1 text-md bold text-light">
       <div className="flex justify-space-between align-items-center container">
         <span className="brand">DashBoard</span>
         {
-          props.currUser.isLoggedIn ? 
+          props.currUser.email || props.currUser.password || props.currUser.isLoggedIn ? 
           (
-            <>
-              <button onClick={() => props.dispatch(toggleSettings())}>Settings</button>
-              <button onClick={() => {props.dispatch(logout()); props.currUser.isLoggedIn=false; setLogin()}}>Logout</button>
-            </>
+            <div className="flex flex-col-gap-1">
+              <button className="btn bg-primary text-light bold" onClick={() => props.dispatch(toggleSettings())}>Settings</button>
+              <button className="btn bg-primary text-light bold" onClick={() => {props.dispatch(logout()); props.currUser.isLoggedIn=false; setLogin()}}>Logout</button>
+            </div>
           ) : <button onClick={() => props.dispatch(toggleLoginForm())}>Login</button>
         }
       </div> 

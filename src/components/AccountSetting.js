@@ -24,13 +24,15 @@ function AccountSetting(props){
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form setting-form flex flex-col justify-center align-items-center flex-row-gap-1" onSubmit={handleSubmit}>
+      <h2 className="text-md text-light bold">Update Credentials</h2>
       <input
         onChange={handleChange}
         value={user.email}
         name="email"
         type="email"
         placeholder="Enter Email"
+        className="form-control"
         id="email"
       />
       <input
@@ -39,9 +41,10 @@ function AccountSetting(props){
         name="password"
         type="password"
         placeholder="Enter Password"
+        className="form-control"
         id="password"
       />
-      <input type="submit" value="update credentials" />
+      <input className="btn btn-form bg-green text-light" type="submit" value="update credentials" />
     </form>
   )
 }

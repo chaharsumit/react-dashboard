@@ -17,30 +17,35 @@ function Signup(props) {
     await wait(2000);
     user.isLoggedIn = true;
     setUser(user);
-    props.dispatch(toggleLoader());
     props.dispatch(fillCurrUserData(user));
+    props.dispatch(toggleLoader());
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        onChange={handleChange}
-        value={user.email}
-        name="email"
-        type="email"
-        placeholder="Enter Email"
-        id="email"
-      />
-      <input
-        onChange={handleChange}
-        value={user.password}
-        name="password"
-        type="password"
-        placeholder="Enter Password"
-        id="password"
-      />
-      <input type="submit" value="Sign Up" />
-    </form>
+    <div className="form-container justify-center align-items-center">
+      <form className="form flex flex-col flex-row-gap-1 justify-center align-items-center" onSubmit={handleSubmit}>
+        <h2 className="text-md text-light bold">SignUp To Continue</h2>
+        <input
+          onChange={handleChange}
+          value={user.email}
+          name="email"
+          type="email"
+          placeholder="Enter Email"
+          className="form-control"
+          id="email"
+        />
+        <input
+          onChange={handleChange}
+          value={user.password}
+          name="password"
+          type="password"
+          placeholder="Enter Password"
+          className="form-control"
+          id="password"
+        />
+        <input type="submit" className="btn btn-form bg-green text-light" value="Sign Up" />
+      </form>
+    </div>
   );
 }
 

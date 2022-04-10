@@ -4,13 +4,11 @@ import {
   toggleLoader,
   fillCurrUserData,
   toggleSettings,
-  switchSettingForm,
-  setLoginStatus
+  switchSettingForm
 } from "../store/action";
 import { setUser } from "../utils/storage";
 
 function UserInfoSetting(props) {
-
   let { user } = props;
 
   function handleChange({ target }) {
@@ -28,14 +26,16 @@ function UserInfoSetting(props) {
     props.dispatch(fillCurrUserData(user));
     props.dispatch(toggleLoader());
     props.dispatch(toggleSettings());
-    props.dispatch(switchSettingForm('account'));
+    props.dispatch(switchSettingForm("account"));
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>Your Name</legend>
+    <form className="form setting-form flex flex-col justify-center align-items-center flex-row-gap-1" onSubmit={handleSubmit}>
+      <h2 className="text-md text-light bold">Update Address Info</h2>
+      <fieldset className="flex flex-col-gap-1">
+        <legend className="bold text-light mb-1">Your Name</legend>
         <input
+          className="form-control"
           onChange={handleChange}
           value={user.firstName}
           name="firstname"
@@ -44,6 +44,7 @@ function UserInfoSetting(props) {
           id="firstName"
         />
         <input
+          className="form-control"
           onChange={handleChange}
           value={user.lastName}
           name="lastname"
@@ -52,9 +53,10 @@ function UserInfoSetting(props) {
           id="lastName"
         />
       </fieldset>
-      <fieldset>
-        <legend>Address</legend>
+      <fieldset className="flex flex-row wrap justify-space-between flex-row-gap-1">
+        <legend className="bold text-light mb-1">Address</legend>
         <input
+          className="form-control flex-48"
           onChange={handleChange}
           value={user.street}
           name="street"
@@ -63,6 +65,7 @@ function UserInfoSetting(props) {
           id="lastName"
         />
         <input
+          className="form-control flex-48"
           onChange={handleChange}
           value={user.house}
           name="house"
@@ -71,6 +74,7 @@ function UserInfoSetting(props) {
           id="house"
         />
         <input
+          className="form-control flex-48"
           onChange={handleChange}
           value={user.postalCode}
           name="postalcode"
@@ -79,6 +83,7 @@ function UserInfoSetting(props) {
           id="postalCode"
         />
         <input
+          className="form-control flex-48"
           onChange={handleChange}
           value={user.number}
           name="number"
@@ -87,27 +92,19 @@ function UserInfoSetting(props) {
           id="number"
         />
       </fieldset>
-      <fieldset>
-        <legend>Country</legend>
-        <select onChange={handleChange} name="country" id="country">
-        <option value="" selected disabled>
-          Select country
-        </option>
-        <option value="india">
-          India
-        </option>
-        <option value="austria">
-          Austria
-        </option>
-        <option value="germany">
-          Germany
-        </option>
-        <option value="switzerland">
-          Switzerland
-        </option>
-      </select>
+      <fieldset className="wd-100">
+        <legend className="bold text-light mb-1">Country</legend>
+        <select className="form-control wd-100" onChange={handleChange} name="country" id="country">
+          <option value="" selected disabled>
+            Select country
+          </option>
+          <option value="india">India</option>
+          <option value="austria">Austria</option>
+          <option value="germany">Germany</option>
+          <option value="switzerland">Switzerland</option>
+        </select>
       </fieldset>
-      <input type="submit" value="Update data" />
+      <input type="submit" className="btn btn-form bg-green text-light" value="Update Address" />
     </form>
   );
 }
