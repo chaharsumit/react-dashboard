@@ -1,8 +1,8 @@
-export default function loaderReducer(state=false, action){
-  switch(action.type){
+export default function loaderReducer(state = false, action) {
+  switch (action.type) {
     case "TOGGLE_LOADER":
       return !state;
-    default: 
+    default:
       return state;
   }
 }

@@ -1,4 +1,4 @@
-import { getUser } from '../../utils/storage';
+import { getUser } from "../../utils/storage";
 
 let initialState = {
   email: "",
@@ -10,7 +10,7 @@ let initialState = {
   number: "",
   postalCode: "",
   country: "",
-  isLoggedIn: false,
+  isLoggedIn: false
 };
 
 function userReducer(state = initialState, action) {
@@ -20,7 +20,7 @@ function userReducer(state = initialState, action) {
     case "SET_PASSWORD":
       return { ...state, password: action.payload };
     case "SET_FIRSTNAME":
-    return { ...state, firstName: action.payload };
+      return { ...state, firstName: action.payload };
     case "SET_LASTNAME":
       return { ...state, lastName: action.payload };
     case "SET_COUNTRY":
@@ -37,10 +37,12 @@ function userReducer(state = initialState, action) {
       return { ...state, isLoggedIn: !state.isLoggedIn };
     case "FILL_DATA_ON_LOGIN":
       return action.payload;
+    case "SET_DATA_ON_LOGIN_FORM_TOGGLE":
+      return initialState;
     case "LOGOUT":
       return initialState;
     case "REVERT_TO_PREV_STATE":
-      return { ...getUser() }
+      return { ...getUser() };
     default:
       return state;
   }

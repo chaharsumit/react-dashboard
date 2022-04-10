@@ -33,6 +33,12 @@ export function toggleLoginForm(){
   }
 }
 
+export function clearLoginForm(){
+  return {
+    type: "SET_DATA_ON_LOGIN_FORM_TOGGLE"
+  }
+}
+
 export function toggleSettings(){
   return {
     type: "TOGGLE_SETTING_FORM"
@@ -55,5 +61,19 @@ export function switchSettingForm(tab){
 export function revertToPrevState(){
   return {
     type: "REVERT_TO_PREV_STATE"
+  }
+}
+
+export function setErrors(name,value=''){
+  name=name.toUpperCase();
+  return {
+    type: `${name}_ERROR`,
+    payload: value
+  }
+}
+
+export function clearConfirmPassword(){
+  return {
+    type: 'CLEAR_PASSWORD'
   }
 }

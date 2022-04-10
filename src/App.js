@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Setting from "./components/Setting";
 import { useEffect } from "react";
 import { fillCurrUserData, setLoginStatus } from "./store/action";
+import Loader from './components/Loader';
 
 function App(props) {
   let { isLoading, formVisibility, currUser } = props;
@@ -22,7 +23,7 @@ function App(props) {
     <>
       <Header />
       <main>
-        {isLoading ? <p>loading...</p> : ""}
+        {isLoading ? <Loader /> : ""}
         {formVisibility.isLoginVisible && !currUser.isLoggedIn ? <Login /> : ""}
         {formVisibility.isSettingsVisible ? <Setting /> : ""}
         {!getUser() ? <Signup /> : ""}
