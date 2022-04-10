@@ -63,7 +63,7 @@ function UserInfoSetting(props) {
           value={user.street}
           name="street"
           type="text"
-          placeholder="Enter Last Name"
+          placeholder="Enter Street"
           id="lastName"
         />
         <input
@@ -72,7 +72,7 @@ function UserInfoSetting(props) {
           value={user.house}
           name="house"
           type="text"
-          placeholder="Enter last name"
+          placeholder="Enter house"
           id="house"
         />
         <input
