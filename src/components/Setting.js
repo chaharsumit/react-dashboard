@@ -1,7 +1,27 @@
+import { connect } from 'react-redux';
 import AccountSetting from './AccountSetting';
+import UserInfoSetting from './UserInfoSetting';
+import { switchSettingForm, revertToPrevState } from '../store/action';
 
-export default function Setting(){
+function Setting(props){
+
+  let { formVisibility } = props;
+
   return (
-    <AccountSetting />
+    <>
+      <p onClick={() => {props.dispatch(switchSettingForm('account')); props.dispatch(revertToPrevState())}}>account</p>
+      <p onClick={() => {props.dispatch(switchSettingForm('address')); props.dispatch(revertToPrevState())}}>address</p>
+      {
+        formVisibility.currSettingForm === 'account' ? <AccountSetting /> : <UserInfoSetting />
+      }
+    </>
   )
 }
+
+function mapStateToProps(state){
+  return {
+    formVisibility: state.formVisibilityReducer
+  }
+}
+
+export default connect(mapStateToProps)(Setting);

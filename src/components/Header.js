@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { toggleLoginForm, logout, toggleSettings } from "../store/action";
+import { toggleLoginForm, logout, toggleSettings, setLoginStatus } from "../store/action";
+import { setUser, setLogin } from "../utils/storage";
 
 function Header(props){
   return (
@@ -7,11 +8,11 @@ function Header(props){
       <div className="flex justify-space-between align-items-center container">
         <span className="brand">DashBoard</span>
         {
-          props.currUser.email ? 
+          props.currUser.isLoggedIn ? 
           (
             <>
               <button onClick={() => props.dispatch(toggleSettings())}>Settings</button>
-              <button onClick={() => props.dispatch(logout())}>Logout</button>
+              <button onClick={() => {props.dispatch(logout()); props.currUser.isLoggedIn=false; setLogin()}}>Logout</button>
             </>
           ) : <button onClick={() => props.dispatch(toggleLoginForm())}>Login</button>
         }

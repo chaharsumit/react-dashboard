@@ -17,8 +17,8 @@ function AccountSetting(props){
     props.dispatch(toggleLoader());
     await wait(2000);
     setUser(user);
+    console.log(user);
     props.dispatch(fillCurrUserData(user));
-    props.dispatch(clearForm());
     props.dispatch(toggleLoader());
     props.dispatch(toggleSettings());
   }
@@ -41,14 +41,14 @@ function AccountSetting(props){
         placeholder="Enter Password"
         id="password"
       />
-      <input type="submit" value="Sign Up" />
+      <input type="submit" value="update credentials" />
     </form>
   )
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.authReducer,
+    user: state.currUserReducer,
     loader: state.loaderReducer,
   };
 }

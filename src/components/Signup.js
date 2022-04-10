@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addUserInput, toggleLoader, clearForm, fillCurrUserData } from "../store/action";
+import { addUserInput, toggleLoader, setLoginStatus, fillCurrUserData } from "../store/action";
 import { setUser } from '../utils/storage';
 
 function Signup(props) {
@@ -15,8 +15,8 @@ function Signup(props) {
     event.preventDefault();
     props.dispatch(toggleLoader());
     await wait(2000);
+    user.isLoggedIn = true;
     setUser(user);
-    props.dispatch(clearForm());
     props.dispatch(toggleLoader());
     props.dispatch(fillCurrUserData(user));
   }
@@ -46,7 +46,7 @@ function Signup(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.authReducer,
+    user: state.currUserReducer,
     loader: state.loaderReducer,
   };
 }

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { addUserInput, toggleLoader, clearForm, fillCurrUserData, toggleLoginForm } from "../store/action";
-import { getUser } from '../utils/storage';
+import { addUserInput, toggleLoader, setLoginStatus, fillCurrUserData, toggleLoginForm } from "../store/action";
+import { getUser, setUser } from '../utils/storage';
 
 function Login(props) {
   let { user } = props;
@@ -24,8 +24,10 @@ function Login(props) {
     props.dispatch(toggleLoader());
     await wait(2000);
     if(authenticateUser()){
-      props.dispatch(fillCurrUserData(user));
-      props.dispatch(clearForm());
+      let currUser = getUser();
+      currUser.isLoggedIn = true;
+      setUser(currUser);
+      props.dispatch(fillCurrUserData(currUser));
       props.dispatch(toggleLoader());
       props.dispatch(toggleLoginForm());
     }else{
@@ -52,14 +54,14 @@ function Login(props) {
         placeholder="Enter Password"
         id="password"
       />
-      <input type="submit" value="Sign Up" />
+      <input type="submit" value="login" />
     </form>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.authReducer,
+    user: state.currUserReducer,
     loader: state.loaderReducer,
   };
 }

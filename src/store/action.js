@@ -1,5 +1,6 @@
 export function addUserInput(field, value){
   field = field.toUpperCase();
+  console.log(field);
   return {
     type: `SET_${field}`,
     payload: value
@@ -7,15 +8,15 @@ export function addUserInput(field, value){
 }
 
 export function toggleLoader(){
-  console.log('toggle');
   return {
     type: "TOGGLE_LOADER"
   }
 }
 
-export function clearForm(){
+export function setLoginStatus(){
+  console.log('ss');
   return {
-    type: "CLEAR_FORM"
+    type: "SET_LOGIN_STATUS"
   }
 }
 
@@ -41,5 +42,18 @@ export function toggleSettings(){
 export function logout(){
   return {
     type: 'LOGOUT'
+  }
+}
+
+export function switchSettingForm(tab){
+  tab = tab.toUpperCase();
+  return {
+    type: `SWITCH_CURRENT_SETTING_FORM_TO_${tab}`
+  }
+}
+
+export function revertToPrevState(){
+  return {
+    type: "REVERT_TO_PREV_STATE"
   }
 }
